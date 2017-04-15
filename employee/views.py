@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from .models import Attendance,Employee,Csv_files
 import csv
+from django.contrib.auth.decorators import login_required
 from .forms import FilerbyDate
 # Create your views here.
+@login_required(login_url="/admin/")
 def home(request):
     if request.method == 'POST' and request.FILES['myfile']:
         myfile = request.FILES['myfile']
@@ -25,7 +27,7 @@ def home(request):
             print(row['time_in'])
 
     return render(request, 'upoadcsv.html')
-#a
+@login_required(login_url="/admin/")
 def filerBYmonth(request):
     if request.method=='GET':
 
@@ -44,7 +46,7 @@ def filerBYmonth(request):
         print(year)
         print(month)
         return render(request,'filterbyDate.html',{'data':data})
-#B
+@login_required(login_url="/admin/")
 def filerBYday(request):
     if request.method=='GET':
 
@@ -62,6 +64,7 @@ def filerBYday(request):
         # print(year)
         # print(month)
         return render(request,'filterbyday.html',{'data':date})
+@login_required(login_url="/admin/")
 def filerBYdayandid(request):
     if request.method=='GET':
 

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
+    <h3>Entry and Leaving time of a particular employee on a particular day.</h3>
      <form method="post" >
     {% csrf_token %}
     <input type="number" name="emp_id" class="form-control">
@@ -31,8 +32,8 @@
 
                             <td>{{ d.emp_id.emp_id }}</td>
                             <td>{{ d.emp_id }}</td>
-                          <td>{{ d.time_in }}</td>
-                          <td>{{ d.time_out }}</td>
+                              <td>{{ d.time_in }}</td>
+                              <td>{{ d.time_out }}</td>
                             <td>{% if d.Absent %}Absent{% else %}Present{% endif %}</td>
                           </tr>
 
