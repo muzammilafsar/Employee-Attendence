@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+{% block body %}
+<form method="post" >
+    {% csrf_token %}
+    <input type="date" name="date" class="form-control">
+    <input type="submit" class="form-control">
+</form>
+    {% if data %}
+        <table class="table">
+    <thead>
+      <tr>
+        <th>Employee id </th>
+          <th>Name</th>
+        <th>Time IN</th>
+        <th>Time Out</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for d in data %}
+
+            <div class="container">
+
+
+      <tr>
+
+        <td>{{ d.emp_id.emp_id }}</td>
+          <td>{{ d.emp_id }}</td>
+        <td>{{ d.time_in }}</td>
+        <td>{{ d.time_out }}</td>
+      </tr>
+
+
+</div>
+        {% endfor %}
+         </tbody>
+  </table>
+    {% endif %}
+{% endblock %}

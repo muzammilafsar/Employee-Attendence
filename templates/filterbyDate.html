@@ -1,0 +1,44 @@
+
+
+{% extends 'base.html' %}
+
+
+{% block body %}
+ <form method="post" >
+    {% csrf_token %}
+    <input type="number" name="emp_id" class="form-control">
+    <input type="month" name="month" class="form-control">
+    <input type="submit">
+</form>
+     {% if data %}
+         <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Date </th>
+                              <th>Time IN</th>
+                              <th>Time Out</th>
+                              <th>Attendace</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+        {% for d in data %}
+
+            <div class="container">
+
+
+                          <tr>
+
+                            <td>{{ d.date }}</td>
+                            <td>{{ d.time_in }}</td>
+                          <td>{{ d.time_out }}</td>
+                            <td>{% if d.Absent %}Absent{% else %}Present{% endif %}</td>
+                          </tr>
+
+
+        {% endfor %}
+         </tbody>
+                      </table>
+                    </div>
+    {% endif %}
+{% endblock %}
