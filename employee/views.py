@@ -4,6 +4,7 @@ import csv
 from django.contrib.auth.decorators import login_required
 from .forms import FilerbyDate
 # Create your views here.
+#uploading csv and parsing it
 @login_required(login_url="/admin/")
 def home(request):
     if request.method == 'POST' and request.FILES['myfile']:
@@ -30,6 +31,7 @@ def home(request):
 
     return render(request, 'upoadcsv.html')
 
+#filterby month
 @login_required(login_url="/admin/")
 def filerBYmonth(request):
     if request.method=='GET':
@@ -49,6 +51,7 @@ def filerBYmonth(request):
         print(year)
         print(month)
         return render(request,'filterbyDate.html',{'data':data})
+        # filterby day
 @login_required(login_url="/admin/")
 def filerBYday(request):
     if request.method=='GET':
@@ -67,6 +70,7 @@ def filerBYday(request):
         # print(year)
         # print(month)
         return render(request,'filterbyday.html',{'data':date})
+        # filterby day and id
 @login_required(login_url="/admin/")
 def filerBYdayandid(request):
     if request.method=='GET':
