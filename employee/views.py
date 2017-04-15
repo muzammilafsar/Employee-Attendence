@@ -14,19 +14,22 @@ def home(request):
         f = open(myfile.name, 'rt')
         reader = csv.DictReader(f)
         for row in reader:
+            # print(row)
             at=Attendance()
             e=Employee.objects.get(pk=row['emp_id'])
             at.emp_id=e
             at.time_in=row['time_in']
             at.time_out =row['time_out']
             at.date =row['date']
+            at.Absent=(row['absent'])
             at.save()
-            print(row['no'])
-            print(row['date'])
-            print(row['emp_id'])
-            print(row['time_in'])
+            print((row['absent']))
+            # print(row['date'])
+            # print(row['emp_id'])
+            # print(row['time_in'])
 
     return render(request, 'upoadcsv.html')
+
 @login_required(login_url="/admin/")
 def filerBYmonth(request):
     if request.method=='GET':

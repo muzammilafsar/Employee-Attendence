@@ -13,6 +13,7 @@
           <th>Name</th>
         <th>Time IN</th>
         <th>Time Out</th>
+          <th>Attendance</th>
       </tr>
     </thead>
     <tbody>
@@ -27,6 +28,7 @@
           <td>{{ d.emp_id }}</td>
         <td>{{ d.time_in }}</td>
         <td>{{ d.time_out }}</td>
+          <td>{% if d.Absent %}Absent{% else %}Present{% endif %}</td>
       </tr>
 
 
